@@ -94,7 +94,7 @@ function draw()
     Intersect
     if(true)
     {
-        text('Fuckkkkk', 500, 500)
+        text('', 500, 500)
     }
     
 
