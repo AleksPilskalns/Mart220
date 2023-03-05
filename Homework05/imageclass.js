@@ -7,6 +7,10 @@ class imageclass{
         this.y = y;
         this.h = h;
         this.w = w;
+       /* this.imageObjects = [];
+        this.loadAnimation();
+        this.i =0;
+        setInterval(this.incrementIndex, 50); */
     }
 
     getImage()
@@ -49,5 +53,22 @@ class imageclass{
     {
         this.w = w;
     }
+
+
+
+   /* loadAnimation()
+    {
+        for(var i = 0; i < this.path.length; i++)
+        {
+            this.imageObjects[i] = loadImage(this.path[i]);
+        }
+    }
+
+
+    drawAnimation(i)
+    {
+        image(this.imageObjects[i], this.x, this.y, this.w, this.h);
+    } */
+
 
 }

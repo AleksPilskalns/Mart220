@@ -76,7 +76,8 @@ currentObjects = girlObjects;
 
 
 //changes speed of idle motion
-myInterval = setInterval(incrementIndex, 150);   
+setInterval(incrementIndex, 150);   
+
 }
 
 
@@ -91,11 +92,13 @@ function draw()
 
     image(img, xRandom, yRandom)
 
-    Intersect
-    if(true)
-    {
-        text('', 500, 500)
-    }
+    
+
+    
+    isRectanglesColliding(result, img);
+
+
+   
     
 
     if(keyIsPressed)
@@ -261,19 +264,29 @@ image(currentAnimation[counter], currentObjects[counter].getX(), currentObjects[
      }
 }
 
+
+
 function getRandomNumber(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
   }
 
 
 
-function Intersect(currentObjects, img){
 
-if (currentObjects == img)
-{
-    return true;
+
+
+function isRectanglesColliding(rec1, rec2){
+    var topEdge1 = rec1.getY() + rec1.getH();
+    var rightEdge1 = rec1.getX() + rec1.getW(); 
+    var leftEdge1 = rec1.getX();
+    var bottomEdge1 = rec1.getY();
+    var topEdge2 = rec2.getY() + rec2.getH();
+    var rightEdge2 = rec2.getX() + rec2.getW(); 
+    var leftEdge2 = rec2.getX();
+    var bottomEdge2 = rec2.getY();   
+    
+    if( leftEdge1 < rightEdge2 && rightEdge1 > leftEdge2 && bottomEdge1 < topEdge2 && topEdge1 > bottomEdge2){
+        return true; 
+   }
+   return false;
 }
-
-}
-
-
