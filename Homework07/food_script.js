@@ -90,13 +90,12 @@ function draw()
     background(20);
 
 
-    image(img, xRandom, yRandom)
+    image(img, xRandom, yRandom) = currentFood
 
     
-
+   
+    //isRectanglesColliding(girlObjects, currentFood);
     
-    isRectanglesColliding(result, img);
-
 
    
     
@@ -275,7 +274,7 @@ function getRandomNumber(min, max) {
 
 
 
-function isRectanglesColliding(rec1, rec2){
+/*function isRectanglesColliding(rec1, rec2){
     var topEdge1 = rec1.getY() + rec1.getH();
     var rightEdge1 = rec1.getX() + rec1.getW(); 
     var leftEdge1 = rec1.getX();
@@ -288,5 +287,6 @@ function isRectanglesColliding(rec1, rec2){
     if( leftEdge1 < rightEdge2 && rightEdge1 > leftEdge2 && bottomEdge1 < topEdge2 && topEdge1 > bottomEdge2){
         return true; 
    }
-   return false;
-}
+   return false;*/
+
+
