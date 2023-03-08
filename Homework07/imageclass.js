@@ -74,23 +74,7 @@ class imageclass{
        return false;
     }
 
-    /*getH()
-    {
-        return this.h;
-    }
-    getW()
-    {
-        return this.w;
-    }
-
-    setH(h)
-    {
-        this.h = h;
-    }
-    setW(w)
-    {
-        this.w = w;
-    }
+    
 
 
 
