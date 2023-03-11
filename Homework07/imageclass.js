@@ -58,22 +58,35 @@ class imageclass{
     }
 
 
-    isRectanglesColliding(rec1, rec2){
-        var topEdge1 = rec1.getY() + rec1.getH();
-        var rightEdge1 = rec1.getX() + rec1.getW(); 
-        var leftEdge1 = rec1.getX();
-        var bottomEdge1 = rec1.getY();
-        var topEdge2 = rec2.getY() + rec2.getH();
-        var rightEdge2 = rec2.getX() + rec2.getW(); 
-        var leftEdge2 = rec2.getX();
-        var bottomEdge2 = rec2.getY();   
-        
-        if( leftEdge1 < rightEdge2 && rightEdge1 > leftEdge2 && bottomEdge1 < topEdge2 && topEdge1 > bottomEdge2){
-            return true; 
-       }
-       return false;
-    }
+    isRectanglesColliding(rec2){
 
+        var topEdge1 = this.y + this.h;
+
+        var rightEdge1 = this.x + this.w;
+
+        var leftEdge1 = this.x;
+
+        var bottomEdge1 = this.y;
+
+        var topEdge2 = rec2.getY() + rec2.getH();
+
+        var rightEdge2 = rec2.getX() + rec2.getW();
+
+        var leftEdge2 = rec2.getX();
+
+        var bottomEdge2 = rec2.getY();  
+
+        
+
+        if( leftEdge1 < rightEdge2 && rightEdge1 > leftEdge2 && bottomEdge1 < topEdge2 && topEdge1 > bottomEdge2){
+
+            return true;
+
+       }
+
+       return false;
+
+    }
     
 
 
