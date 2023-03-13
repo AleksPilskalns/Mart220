@@ -57,21 +57,21 @@ function setup() {
     yRandom = getRandomNumber(150, 900);
 
 
-    currentFood = new imageclass('ass/icecream(1).png', xRandom, yRandom);
+    currentFood = new imageclass('ass/icecream(1).png', xRandom, yRandom, 180, 180);
     myFood = currentFood.getImage();
 
 
     for (var i = 0; i < result.length; i++)         //where the image appears on screen
-    {girlObjects.push(new imageclass('ass/' + result[i], 0, 200,));
+    {girlObjects.push(new imageclass('ass/' + result[i], 100, 100, 200, 200));
     animations[i] = girlObjects[i].getImage();
 }
 
 
 for (var i = 0; i < walkresult.length; i++)
 {
-    girlWalkObjects.push(new imageclass('ass/' + walkresult[i], 0, 200));
+    girlWalkObjects.push(new imageclass('ass/' + walkresult[i], 100, 100, 200, 200));
     walkAnimation[i] = girlWalkObjects[i].getImage();
-    girlWalkLeftObjects.push(new imageclass('ass/' + walkresultleft[i], 0,200));
+    girlWalkLeftObjects.push(new imageclass('ass/' + walkresultleft[i], 100, 100, 200, 200));
     leftwalkAnimation[i] =  girlWalkLeftObjects[i].getImage();
 }
 
@@ -116,7 +116,7 @@ function draw()
         
         if(isColliding)
         {
-            fill(120)
+            
             console.log("I have hit something! Ouch!");
         }
 
@@ -163,7 +163,7 @@ function draw()
         
         if(isColliding)
         {
-            fill(120)
+            
             console.log("I have hit something! Ouch!");
         }
 
@@ -196,7 +196,7 @@ function draw()
         
         if(isColliding)
         {
-            fill(120)
+            
             console.log("I have hit something! Ouch!");
         }
 
@@ -231,7 +231,7 @@ function draw()
         
         if(isColliding)
         {
-            fill(120)
+            
             console.log("I have hit something! Ouch!");
         }
 
@@ -265,7 +265,7 @@ function draw()
         
         if(isColliding)
         {
-            fill(120)
+            
             console.log("I have hit something! Ouch!");
         }
 
@@ -283,7 +283,7 @@ function draw()
         
         if(isColliding)
         {
-            fill(120)
+           
             console.log("I have hit something! Ouch!");
         }
 
@@ -307,7 +307,7 @@ else
         
         if(isColliding)
         {
-            fill(120)
+          
             console.log("I have hit something! Ouch!");
         }
 
@@ -323,7 +323,7 @@ isColliding = currentObjects[counter].isRectanglesColliding(currentFood);
         
         if(isColliding)
         {
-            fill(120)
+            
             console.log("I have hit something! Ouch!");
         }
 
