@@ -12,7 +12,6 @@ var animations = [];
 var walkAnimation =[];
 var leftwalkAnimation = [];
 var currentAnimation;
-var foodAnimation = [];
 var currentFood;
 
 
@@ -117,7 +116,7 @@ function draw()
         if(isColliding)
         {
             
-            console.log("I have hit something! Ouch!");
+            console.log("Yummy!");
         }
 
         clearInterval(myInterval);
@@ -164,7 +163,7 @@ function draw()
         if(isColliding)
         {
             
-            console.log("I have hit something! Ouch!");
+            console.log("Yummy!");
         }
 
         }
@@ -197,7 +196,7 @@ function draw()
         if(isColliding)
         {
             
-            console.log("I have hit something! Ouch!");
+            console.log("Yummy!");
         }
 
     }
@@ -232,7 +231,7 @@ function draw()
         if(isColliding)
         {
             
-            console.log("I have hit something! Ouch!");
+            console.log("Yummy!");
         }
 
     }
@@ -266,7 +265,7 @@ function draw()
         if(isColliding)
         {
             
-            console.log("I have hit something! Ouch!");
+            console.log("Yummy!");
         }
 
     }
@@ -284,7 +283,7 @@ function draw()
         if(isColliding)
         {
            
-            console.log("I have hit something! Ouch!");
+            console.log("Yummy!");
         }
 
 }
@@ -308,7 +307,7 @@ else
         if(isColliding)
         {
           
-            console.log("I have hit something! Ouch!");
+            console.log("Yummy!");
         }
 
 
@@ -324,7 +323,7 @@ isColliding = currentObjects[counter].isRectanglesColliding(currentFood);
         if(isColliding)
         {
             
-            console.log("I have hit something! Ouch!");
+            console.log("Yummy!");
         }
 
 
@@ -362,21 +361,5 @@ function getRandomNumber(min, max) {
 
 
 
-
-
-/*function isRectanglesColliding(rec1, rec2){
-    var topEdge1 = rec1.getY() + rec1.getH();
-    var rightEdge1 = rec1.getX() + rec1.getW(); 
-    var leftEdge1 = rec1.getX();
-    var bottomEdge1 = rec1.getY();
-    var topEdge2 = rec2.getY() + rec2.getH();
-    var rightEdge2 = rec2.getX() + rec2.getW(); 
-    var leftEdge2 = rec2.getX();
-    var bottomEdge2 = rec2.getY();   
-    
-    if( leftEdge1 < rightEdge2 && rightEdge1 > leftEdge2 && bottomEdge1 < topEdge2 && topEdge1 > bottomEdge2){
-        return true; 
-   }
-   return false;*/
 
 
