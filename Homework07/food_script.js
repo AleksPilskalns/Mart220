@@ -20,6 +20,7 @@ var walkresult;
 var walkresultleft;
 var foodresult;
 
+var points = 0;
 
 var img;
 
@@ -35,22 +36,27 @@ var myFood;
 var isColliding = false;
 
 
+var myBackgroundSound;
+
+
 function preload() {
 
   result = loadStrings('ass/idle.txt');
   walkresult = loadStrings('ass/walk.txt')
   walkresultleft = loadStrings('ass/walkleft.txt')
   
-
+  soundFormats('mp3');
+  myBackgroundSound = loadSound('ass/ytmp3free.cc_there-will-be-rain-youtubemp3free.org.mp3');
  
 }
+
 
 
 
 function setup() {
     createCanvas(2000, 1000);
 
-
+   
 
     xRandom = getRandomNumber(150, 1900);
     yRandom = getRandomNumber(150, 900);
@@ -61,7 +67,8 @@ function setup() {
 
 
     for (var i = 0; i < result.length; i++)         //where the image appears on screen
-    {girlObjects.push(new imageclass('ass/' + result[i], 100, 100, 200, 200));
+    {
+        girlObjects.push(new imageclass('ass/' + result[i], 100, 100, 200, 200));
     animations[i] = girlObjects[i].getImage();
 }
 
@@ -90,8 +97,13 @@ setInterval(incrementIndex, 300);
 }
 
 
-
-
+function mousePressed()
+    {
+    myBackgroundSound.play();
+    myBackgroundSound.loop();
+    myBackgroundSound.setVolume(0.3);
+    
+    }
 
 
 function draw() 
@@ -111,13 +123,7 @@ function draw()
 
     if(keyIsPressed)
     {
-        isColliding = currentObjects[counter].isRectanglesColliding(currentFood);
-        
-        if(isColliding)
-        {
-            
-            console.log("Yummy!");
-        }
+        collision()
 
         clearInterval(myInterval);
 
@@ -158,13 +164,7 @@ function draw()
 
             girlWalkObjects = currentObjects;
 
-            isColliding = currentObjects[counter].isRectanglesColliding(currentFood);
-        
-        if(isColliding)
-        {
-            
-            console.log("Yummy!");
-        }
+            collision()
 
         }
         else if (key == "a")
@@ -191,13 +191,7 @@ function draw()
 
         girlWalkLeftObjects = currentObjects;
 
-        isColliding = currentObjects[counter].isRectanglesColliding(currentFood);
-        
-        if(isColliding)
-        {
-            
-            console.log("Yummy!");
-        }
+        collision()
 
     }
 
@@ -206,7 +200,7 @@ function draw()
         {
 
 
-            isColliding = currentObjects[counter].isRectanglesColliding(currentFood);
+            
 
         currentAnimation = leftwalkAnimation;
         currentObjects = girlWalkLeftObjects;
@@ -226,13 +220,7 @@ function draw()
 
         girlWalkLeftObjects = currentObjects;
 
-        isColliding = currentObjects[counter].isRectanglesColliding(currentFood);
-        
-        if(isColliding)
-        {
-            
-            console.log("Yummy!");
-        }
+        collision()
 
     }
 
@@ -240,7 +228,7 @@ function draw()
         {
 
 
-            isColliding = currentObjects[counter].isRectanglesColliding(currentFood);
+            
 
         currentAnimation = walkAnimation;
         currentObjects = girlWalkObjects;
@@ -260,13 +248,7 @@ function draw()
 
         girlWalkLeftObjects = currentObjects;
 
-        isColliding = currentObjects[counter].isRectanglesColliding(currentFood);
-        
-        if(isColliding)
-        {
-            
-            console.log("Yummy!");
-        }
+        collision()
 
     }
 
@@ -278,13 +260,7 @@ function draw()
     girlObjects[i].setY(currentObjects[0].getY());
 
 
-    isColliding = currentObjects[counter].isRectanglesColliding(currentFood);
-        
-        if(isColliding)
-        {
-           
-            console.log("Yummy!");
-        }
+    collision()
 
 }
 
@@ -296,7 +272,7 @@ else
         myInterval = setInterval(incrementIndex, 150);
     }
 
-    isColliding = currentObjects[counter].isRectanglesColliding(currentFood);
+    
     
     
     currentObjects = girlObjects;
@@ -304,12 +280,7 @@ else
    
     isColliding = currentObjects[counter].isRectanglesColliding(currentFood);
         
-        if(isColliding)
-        {
-          
-            console.log("Yummy!");
-        }
-
+    collision()
 
 }
 
@@ -318,13 +289,7 @@ image(currentAnimation[counter], currentObjects[counter].getX(), currentObjects[
 
 
 
-isColliding = currentObjects[counter].isRectanglesColliding(currentFood);
-        
-        if(isColliding)
-        {
-            
-            console.log("Yummy!");
-        }
+collision()
 
 
 
@@ -359,7 +324,20 @@ function getRandomNumber(min, max) {
   }
 
 
+function collision() {
 
+    isColliding = currentObjects[counter].isRectanglesColliding(currentFood);
+        
+    if(isColliding)
+    {
+        fill(200)
+        text("Yummy Ice Cream!", 800,200,200,200)
+        
+        points =+ 1;
+        text(points, 850, 300, 200,200)
+    }
+
+}
 
 
 
