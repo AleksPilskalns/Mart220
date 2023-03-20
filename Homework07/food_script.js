@@ -28,6 +28,8 @@ var counter = 0;
 
 var myInterval;
 
+var mycurrentfood;
+
 var index = 0;
 
 var xRandom;
@@ -37,6 +39,7 @@ var isColliding = false;
 
 
 var myBackgroundSound;
+var nomSound;
 
 
 function preload() {
@@ -47,7 +50,7 @@ function preload() {
   
   soundFormats('mp3');
   myBackgroundSound = loadSound('ass/ytmp3free.cc_there-will-be-rain-youtubemp3free.org.mp3');
- 
+  nomSound = loadSound('ass/ytmp3free.cc_nom-nom-nom-sound-effect-youtubemp3free.org.mp3')
 }
 
 
@@ -56,7 +59,7 @@ function preload() {
 function setup() {
     createCanvas(2000, 1000);
 
-   
+    backgroundMusic()
 
     xRandom = getRandomNumber(150, 1900);
     yRandom = getRandomNumber(150, 900);
@@ -97,13 +100,24 @@ setInterval(incrementIndex, 300);
 }
 
 
-function mousePressed()
-    {
+function backgroundMusic()
+{
     myBackgroundSound.play();
     myBackgroundSound.loop();
     myBackgroundSound.setVolume(0.3);
+    userStartAudio();
+}
+
+
+
+function icecreamImage()
+{
+    image(myFood, xRandom, yRandom);
+
     
-    }
+    
+    
+}
 
 
 function draw() 
@@ -111,19 +125,19 @@ function draw()
     background(20);
 
 
-   image(myFood, xRandom, yRandom)
+    //image(myFood, xRandom, yRandom);
 
     
+    icecreamImage()
    
    
-    
 
    
     
 
     if(keyIsPressed)
     {
-        collision()
+        
 
         clearInterval(myInterval);
 
@@ -164,7 +178,7 @@ function draw()
 
             girlWalkObjects = currentObjects;
 
-            collision()
+            
 
         }
         else if (key == "a")
@@ -191,7 +205,7 @@ function draw()
 
         girlWalkLeftObjects = currentObjects;
 
-        collision()
+        
 
     }
 
@@ -220,8 +234,7 @@ function draw()
 
         girlWalkLeftObjects = currentObjects;
 
-        collision()
-
+       
     }
 
     else if (key == "w")
@@ -248,7 +261,7 @@ function draw()
 
         girlWalkLeftObjects = currentObjects;
 
-        collision()
+       
 
     }
 
@@ -260,8 +273,7 @@ function draw()
     girlObjects[i].setY(currentObjects[0].getY());
 
 
-    collision()
-
+   
 }
 
 
@@ -278,9 +290,8 @@ else
     currentObjects = girlObjects;
     currentAnimation = animations;
    
-    isColliding = currentObjects[counter].isRectanglesColliding(currentFood);
-        
-    collision()
+   
+    
 
 }
 
@@ -289,10 +300,14 @@ image(currentAnimation[counter], currentObjects[counter].getX(), currentObjects[
 
 
 
-collision()
 
 
+collision();
 
+/*if(nomSound.isPlaying(true))
+{
+    nomSound.setLoop(false);
+}*/
 
 
 }
@@ -332,12 +347,34 @@ function collision() {
     {
         fill(200)
         text("Yummy Ice Cream!", 800,200,200,200)
+    
+        
         
         points =+ 1;
         text(points, 850, 300, 200,200)
+        
+
+        nomSound.play();
+        nomSound.setLoop(false);
+        nomSound.setVolume(0.2);
+
+        
     }
 
 }
 
+/*function checkCollision()
+{
+    currentObjects[counter].overlap(currentFood, icecreamSound);
+}*/
 
 
+function icecreamSound()
+{
+    
+    nomSound.play();
+    nomSound.setLoop(false);
+    nomSound.setVolume(0.3);
+    
+    
+}
