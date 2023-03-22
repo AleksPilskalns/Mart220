@@ -13,7 +13,8 @@ var walkAnimation =[];
 var leftwalkAnimation = [];
 var currentAnimation;
 var currentFood;
-
+var badFood
+var badCurrentFood
 
 var result;
 var walkresult;
@@ -34,12 +35,15 @@ var index = 0;
 
 var xRandom;
 var yRandom;
+var xRandom1;
+var yRandom1;
 var myFood;
 var isColliding = false;
 
 
 var myBackgroundSound;
 var nomSound;
+var ewSound
 
 
 function preload() {
@@ -51,6 +55,7 @@ function preload() {
   soundFormats('mp3');
   myBackgroundSound = loadSound('ass/ytmp3free.cc_there-will-be-rain-youtubemp3free.org.mp3');
   nomSound = loadSound('ass/ytmp3free.cc_nom-nom-nom-sound-effect-youtubemp3free.org.mp3')
+  ewSound = loadSound('ass/ytmp3free.cc_ew-sound-effect-youtubemp3free.org.mp3')
 }
 
 
@@ -61,13 +66,19 @@ function setup() {
 
     backgroundMusic()
 
-    xRandom = getRandomNumber(150, 1900);
+    xRandom = getRandomNumber(150, 1700);
     yRandom = getRandomNumber(150, 900);
+
+    xRandom1 = getRandomNumber(150, 1700);
+    yRandom1 = getRandomNumber(150, 900);
+
 
 
     currentFood = new imageclass('ass/icecream(1).png', xRandom, yRandom, 180, 180);
     myFood = currentFood.getImage();
 
+    badCurrentFood = new imageclass('ass/ice-cream.png', xRandom1, yRandom1, 180, 180);
+    badFood = badCurrentFood.getImage();
 
     for (var i = 0; i < result.length; i++)         //where the image appears on screen
     {
@@ -130,7 +141,7 @@ function draw()
     
     icecreamImage()
    
-   
+    image(badFood, xRandom1, yRandom1);
 
    
     
@@ -298,7 +309,7 @@ else
 image(currentAnimation[counter], currentObjects[counter].getX(), currentObjects[counter].getY());
 
 
-
+badcollision();
 
 
 
@@ -354,10 +365,17 @@ function collision() {
         text(points, 850, 300, 200,200)
         
 
-        nomSound.play();
-        nomSound.setLoop(false);
-        nomSound.setVolume(0.2);
+        if (!nomSound.isPlaying()) {
 
+            nomSound.play();
+
+            nomSound.setLoop(false);
+
+            nomSound.setVolume(0.2);
+
+ 
+
+        }
         
     }
 
@@ -368,6 +386,36 @@ function collision() {
     currentObjects[counter].overlap(currentFood, icecreamSound);
 }*/
 
+function badcollision() {
+
+    isColliding = currentObjects[counter].isRectanglesColliding(badCurrentFood);
+        
+    if(isColliding)
+    {
+        fill(200)
+        text("Bad Ice Cream!", 800,200,200,200)
+    
+        
+        
+        points =- 1;
+        text(points, 850, 300, 200,200)
+        
+
+        if (!ewSound.isPlaying()) {
+
+            ewSound.play();
+
+            ewSound.setLoop(false);
+
+            ewSound.setVolume(0.2);
+
+ 
+
+        }
+        
+    }
+
+}
 
 function icecreamSound()
 {
