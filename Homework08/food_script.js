@@ -198,7 +198,7 @@ function draw()
             girlObjects.changeAnimation('walk');
             girlObjects.velocity.x += .5;
 
-            if(wall != null)
+      /*      if(wall != null)
       {
         if(girlObjects.collide(wall))
         {
@@ -245,7 +245,7 @@ function draw()
         girlObjects.changeAnimation('left');
       girlObjects.velocity.x += .5;
 
-        if(wall != null)
+       /* if(wall != null)
         {
           if(girlObjects.collide(wall))
           {
@@ -285,7 +285,7 @@ function draw()
         girlObjects.changeAnimation('left');
       girlObjects.velocity.x += .5;
 
-        if(wall != null)
+       /* if(wall != null)
         {
           if(girlObjects.collide(wall))
           {
@@ -315,12 +315,13 @@ function draw()
         {
 
 
-            
+            girlObjects.changeAnimation('walk');
+      girlObjects.velocity.x += .5;
 
        /* currentAnimation = walkAnimation;
         currentObjects = girlWalkObjects;*/
 
-        if(wall != null)
+        /*if(wall != null)
         {
           if(girlObjects.collide(wall))
           {
