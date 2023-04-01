@@ -1,7 +1,7 @@
 
 
 
-var girlObjects = [];
+//var girlObjects = [];
 var girlWalkObjects = [];
 var girlWalkLeftObjects = [];
 var currentObjects;
@@ -16,9 +16,14 @@ var currentFood;
 var badFood
 var badCurrentFood
 
-var result;
+/*var result;
 var walkresult;
-var walkresultleft;
+var walkresultleft;*/
+
+var girlObjects;
+var result, walkresult, walkresultleft;
+
+
 var foodresult;
 
 var points = 0;
@@ -61,7 +66,8 @@ function preload() {
   nomSound = loadSound('ass/ytmp3free.cc_nom-nom-nom-sound-effect-youtubemp3free.org.mp3')
   ewSound = loadSound('ass/ytmp3free.cc_ew-sound-effect-youtubemp3free.org.mp3')
 
-  wall = loadImage('ass/brick.png');
+
+  
 }
 
 
@@ -80,7 +86,17 @@ function setup() {
 
 
 
-   
+    girlObjects = createSprite(300, 250);
+    girlObjects.addAnimation('idle', result[0], result[result.length-1]);
+    girlObjects.addAnimation('walk', walkresult[0], walkresult[walkresult.length-1]);
+    girlObjects.addAnimation('left', walkresultleft[0], walkresultleft[walkresultleft.length-1]);
+
+    wall = createSprite(900, 500, 222, 1000)
+    wall.addImage(loadImage('ass/brick.png'));
+
+
+    
+    //girlObjects.addAnimation('attack', attackresult[0], attackresult[attackresult.length-1]);
 
 
     currentFood = new imageclass('ass/icecream(1).png', xRandom, yRandom, 180, 180);
@@ -89,24 +105,24 @@ function setup() {
     badCurrentFood = new imageclass('ass/ice-cream.png', xRandom1, yRandom1, 180, 180);
     badFood = badCurrentFood.getImage();
 
-    for (var i = 0; i < result.length; i++)         //where the image appears on screen
+    /*for (var i = 0; i < result.length; i++)         //where the image appears on screen
     {
         girlObjects.push(new imageclass('ass/' + result[i], 100, 100, 200, 200));
-    animations[i] = girlObjects[i].getImage();
+    animations[i] = girlObjects[i].getImage();*/
 }
 
 
-for (var i = 0; i < walkresult.length; i++)
+/*for (var i = 0; i < walkresult.length; i++)
 {
     girlWalkObjects.push(new imageclass('ass/' + walkresult[i], 100, 100, 200, 200));
     walkAnimation[i] = girlWalkObjects[i].getImage();
     girlWalkLeftObjects.push(new imageclass('ass/' + walkresultleft[i], 100, 100, 200, 200));
     leftwalkAnimation[i] =  girlWalkLeftObjects[i].getImage();
-}
+}*/
 
 
 
-currentObjects = girlObjects;
+/*currentObjects = girlObjects;
 
 
 
@@ -117,7 +133,7 @@ currentObjects = girlObjects;
 //changes speed of idle motion
 setInterval(incrementIndex, 300);   
 
-}
+}*/
 
 
 function backgroundMusic()
@@ -152,36 +168,49 @@ function draw()
    
     image(badFood, xRandom1, yRandom1);
 
-   image(wall, 900, 0, 222, 1000);
+   //image(wall, 900, 0, 222, 1000);
     
 
     if(keyIsPressed)
     {
         
 
-        clearInterval(myInterval);
+        /*clearInterval(myInterval);
 
         myInterval = null;
-        index++;
+        index++;*/
 
         //changes speed of animation
-        if (index > 3)
+        /*if (index > 3)
         {
             incrementIndex();
             index = 0;
-        }
+        }*/
 
 
-        if (key == "d")
+        if (keyDown('d'))
         {
 
            
-            currentAnimation = walkAnimation;
-            currentObjects = girlWalkObjects;
+            /*currentAnimation = walkAnimation;
+            currentObjects = girlWalkObjects;*/
+
+            girlObjects.changeAnimation('walk');
+            girlObjects.velocity.x += .5;
+
+            if(wall != null)
+      {
+        if(girlObjects.collide(wall))
+        {
+          girlObjects.changeAnimation('idle');
+        }
+      }
+      
+    
 
            
                                                                         //changes speed of character
-            currentObjects[counter].setX(currentObjects[counter].getX() + 10);
+            /*currentObjects[counter].setX(currentObjects[counter].getX() + 10);
 
 
             if (counter >= currentAnimation.length)
@@ -198,19 +227,33 @@ function draw()
 
             girlWalkObjects = currentObjects;
 
+            girlObjects.velocity.x += .5;*/
+      
+
             
 
         }
-        else if (key == "a")
+        else if (keyDown('a'))
         {
 
 
        
         
-        currentAnimation = leftwalkAnimation;
-        currentObjects = girlWalkLeftObjects;
+        /*currentAnimation = leftwalkAnimation;
+        currentObjects = girlWalkLeftObjects;*/
 
-        if (counter >= currentAnimation.length)
+        girlObjects.changeAnimation('left');
+      girlObjects.velocity.x += .5;
+
+        if(wall != null)
+        {
+          if(girlObjects.collide(wall))
+          {
+            girlObjects.changeAnimation('idle');
+          }
+        }
+
+        /*if (counter >= currentAnimation.length)
         {
             counter = 0;
         }
@@ -223,23 +266,34 @@ function draw()
         }
 
 
-        girlWalkLeftObjects = currentObjects;
+        girlWalkLeftObjects = currentObjects;*/
 
         
 
     }
 
 
-    else if (key == "s")
+    else if (keyDown('s'))
         {
 
 
             
 
-        currentAnimation = leftwalkAnimation;
-        currentObjects = girlWalkLeftObjects;
+        /*currentAnimation = leftwalkAnimation;
+        currentObjects = girlWalkLeftObjects;*/
 
-        if (counter >= currentAnimation.length)
+        girlObjects.changeAnimation('left');
+      girlObjects.velocity.x += .5;
+
+        if(wall != null)
+        {
+          if(girlObjects.collide(wall))
+          {
+            girlObjects.changeAnimation('idle');
+          }
+        }
+
+        /*if (counter >= currentAnimation.length)
         {
             counter = 0;
         }
@@ -252,21 +306,29 @@ function draw()
         }
 
 
-        girlWalkLeftObjects = currentObjects;
+        girlWalkLeftObjects = currentObjects;*/
 
        
     }
 
-    else if (key == "w")
+    else if (keyDown('w'))
         {
 
 
             
 
-        currentAnimation = walkAnimation;
-        currentObjects = girlWalkObjects;
+       /* currentAnimation = walkAnimation;
+        currentObjects = girlWalkObjects;*/
 
-        if (counter >= currentAnimation.length)
+        if(wall != null)
+        {
+          if(girlObjects.collide(wall))
+          {
+            girlObjects.changeAnimation('idle');
+          }
+        }
+
+        /*if (counter >= currentAnimation.length)
         {
             counter = 0;
         }
@@ -279,18 +341,18 @@ function draw()
         }
 
 
-        girlWalkLeftObjects = currentObjects;
+        girlWalkLeftObjects = currentObjects;*/
 
        
 
     }
 
 
-    for (var i = 0; i < girlObjects.length; i++)
+    /*for (var i = 0; i < girlObjects.length; i++)
     girlObjects[i].setX(currentObjects[0].getX());
 
     for (var i = 0; i < girlObjects.length; i++)
-    girlObjects[i].setY(currentObjects[0].getY());
+    girlObjects[i].setY(currentObjects[0].getY());*/
 
 
    
@@ -299,7 +361,12 @@ function draw()
 
 else
 {
-    if (myInterval == null)
+
+
+
+    girlObjects.changeAnimation('idle');
+      girlObjects.velocity.x = 0;
+    /*if (myInterval == null)
     {                                   //changes idle animation speed
         myInterval = setInterval(incrementIndex, 150);
     }
@@ -308,21 +375,27 @@ else
     
     
     currentObjects = girlObjects;
-    currentAnimation = animations;
+    currentAnimation = animations;*/
    
    
     
 
 }
 
-image(currentAnimation[counter], currentObjects[counter].getX(), currentObjects[counter].getY());
+//image(currentAnimation[counter], currentObjects[counter].getX(), currentObjects[counter].getY());
 
 
-badcollision();
+girlObjects.debug = mouseIsPressed;
+  
+    drawSprites();
 
 
 
-collision();
+//badcollision();
+
+
+
+//collision();
 
 /*if(nomSound.isPlaying(true))
 {
