@@ -57,9 +57,9 @@ var health = 100;
 
 function preload() {
 
-  result = loadStrings('ass/idle.txt');
-  walkresult = loadStrings('ass/walk.txt')
-  walkresultleft = loadStrings('ass/walkleft.txt')
+  result = loadStrings('./ass/idle.txt');
+  walkresult = loadStrings('./ass/walk.txt')
+  walkresultleft = loadStrings('./ass/walkleft.txt')
   
   soundFormats('mp3');
   myBackgroundSound = loadSound('ass/ytmp3free.cc_there-will-be-rain-youtubemp3free.org.mp3');
