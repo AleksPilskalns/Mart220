@@ -91,8 +91,8 @@ function setup() {
     girlObjects.addAnimation('walk', walkresult[0], walkresult[walkresult.length-1]);
     girlObjects.addAnimation('left', walkresultleft[0], walkresultleft[walkresultleft.length-1]);
 
-    wall = createSprite(900, 500, 222, 1000)
-    wall.addImage(loadImage('ass/brick.png'));
+   /* wall = createSprite(900, 500, 222, 1000)
+    wall.addImage(loadImage('ass/brick.png'));*/
 
 
     
@@ -188,7 +188,7 @@ function draw()
         }*/
 
 
-        if (keyDown('d'))
+        if (kb.pressing('d'))
         {
 
            
@@ -233,7 +233,7 @@ function draw()
             
 
         }
-        else if (keyDown('a'))
+        else if (kb.pressing('a'))
         {
 
 
@@ -243,7 +243,7 @@ function draw()
         currentObjects = girlWalkLeftObjects;*/
 
         girlObjects.changeAnimation('left');
-      girlObjects.velocity.x += .5;
+      girlObjects.velocity.x -= .5;
 
        /* if(wall != null)
         {
@@ -273,7 +273,7 @@ function draw()
     }
 
 
-    else if (keyDown('s'))
+    else if (kb.pressing('s'))
         {
 
 
@@ -283,7 +283,7 @@ function draw()
         currentObjects = girlWalkLeftObjects;*/
 
         girlObjects.changeAnimation('left');
-      girlObjects.velocity.x += .5;
+      girlObjects.velocity.y += .5;
 
        /* if(wall != null)
         {
@@ -311,12 +311,12 @@ function draw()
        
     }
 
-    else if (keyDown('w'))
+    else if (kb.pressing('w'))
         {
 
 
             girlObjects.changeAnimation('walk');
-      girlObjects.velocity.x += .5;
+      girlObjects.velocity.y -= .5;
 
        /* currentAnimation = walkAnimation;
         currentObjects = girlWalkObjects;*/
