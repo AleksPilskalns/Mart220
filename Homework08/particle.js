@@ -5,7 +5,7 @@ class Particle {
       this.y = y;
       this.vx = random(-1, 1);
       this.vy = random(-5, -1);
-      this.alpha = 255;
+      this.alpha = 700;
     }
   
     finished() {
@@ -22,7 +22,7 @@ class Particle {
       noStroke();
       //stroke(255);
       fill(255, this.alpha);
-      ellipse(this.x, this.y, 16);
+      ellipse(this.x, this.y, 70);
     }
   
   }

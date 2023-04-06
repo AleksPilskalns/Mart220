@@ -21,7 +21,7 @@ var walkresult;
 var walkresultleft;*/
 
 var girlObjects;
-var result, walkresult, walkresultleft;
+var result, walkresult, walkresultleft, attackresult;
 
 
 var foodresult;
@@ -45,6 +45,8 @@ var yRandom1;
 var myFood;
 var isColliding = false;
 var wall;
+var icecream
+var badicecream
 
 
 var myBackgroundSound;
@@ -60,6 +62,7 @@ function preload() {
   result = loadStrings('ass/idle.txt');
   walkresult = loadStrings('ass/walk.txt')
   walkresultleft = loadStrings('ass/walkleft.txt')
+  attackresult = loadStrings('ass/attack.txt')
   
   soundFormats('mp3');
   myBackgroundSound = loadSound('ass/ytmp3free.cc_there-will-be-rain-youtubemp3free.org.mp3');
@@ -90,20 +93,26 @@ function setup() {
     girlObjects.addAnimation('idle', result[0], result[result.length-1]);
     girlObjects.addAnimation('walk', walkresult[0], walkresult[walkresult.length-1]);
     girlObjects.addAnimation('left', walkresultleft[0], walkresultleft[walkresultleft.length-1]);
+    girlObjects.addAnimation('attack', attackresult[0], attackresult[attackresult.length-1]);
 
-   /* wall = createSprite(900, 500, 222, 1000)
-    wall.addImage(loadImage('ass/brick.png'));*/
+   wall = createSprite(900, 500, 222, 1000)
+    wall.addImage(loadImage('ass/brick.png'));
 
+    icecream = createSprite(xRandom, yRandom, 180, 180)
+    icecream.addImage(loadImage('ass/icecream(1).png'))
+
+    badicecream = createSprite(xRandom, yRandom, 180, 180)
+    badicecream.addImage(loadImage('ass/ice-cream.png', xRandom, yRandom, 180, 180))
 
     
-    //girlObjects.addAnimation('attack', attackresult[0], attackresult[attackresult.length-1]);
+   
 
 
-    currentFood = new imageclass('ass/icecream(1).png', xRandom, yRandom, 180, 180);
+    /*currentFood = new imageclass('ass/icecream(1).png', xRandom, yRandom, 180, 180);
     myFood = currentFood.getImage();
 
     badCurrentFood = new imageclass('ass/ice-cream.png', xRandom1, yRandom1, 180, 180);
-    badFood = badCurrentFood.getImage();
+    badFood = badCurrentFood.getImage();*/
 
     /*for (var i = 0; i < result.length; i++)         //where the image appears on screen
     {
@@ -164,9 +173,9 @@ function draw()
     //image(myFood, xRandom, yRandom);
 
     
-    icecreamImage()
+    //icecreamImage()
    
-    image(badFood, xRandom1, yRandom1);
+    //image(badFood, xRandom1, yRandom1);
 
    //image(wall, 900, 0, 222, 1000);
     
@@ -175,6 +184,54 @@ function draw()
     {
         
 
+        if(girlObjects.collide(icecream))
+        {
+            fill(200)
+        text("Yummy Ice Cream!", 800,200,200,200)
+    
+        
+        
+        points =+ 1;
+        text(points, 850, 300, 200,200)
+        
+
+        if (!nomSound.isPlaying()) {
+
+            nomSound.play();
+
+            nomSound.setLoop(false);
+
+            nomSound.setVolume(0.2);
+
+ 
+
+        }
+        }
+
+
+        if(girlObjects.collide(badicecream))
+        {
+            fill(200)
+        text("Bad Ice Cream!", 800,200,200,200)
+    
+        
+        
+        points =- 1;
+        text(points, 850, 300, 200,200)
+        
+
+        if (!ewSound.isPlaying()) {
+
+            ewSound.play();
+
+            ewSound.setLoop(false);
+
+            ewSound.setVolume(0.2);
+
+ 
+
+        }
+        }
         /*clearInterval(myInterval);
 
         myInterval = null;
@@ -347,6 +404,34 @@ function draw()
        
 
     }
+
+    else if(kb.pressing('x'))
+    {
+      girlObjects.changeAnimation('attack');
+     
+      if(wall != null)
+      {
+        if(dist(girlObjects.position.x,girlObjects.position.y,wall.position.x,wall.position.y) < 250)
+        {
+          createParticles(wall.position.x, wall.position.y);
+          health -= 1;
+         
+text("you're removing the obstacle!", 800,200,100,200)
+          if(health <= 0)
+          {
+            
+            wall.remove();
+            wall = null;
+            
+            
+            
+       
+        }
+      }
+      
+    }
+}
+
 
 
     /*for (var i = 0; i < girlObjects.length; i++)
@@ -522,7 +607,7 @@ for (let i = 0; i < 5; i++) {
     particles[i].show();
     if (particles[i].finished()) {
       // remove this particle
-      particles.splice(i, 1);
+      particles.splice(i, 10);
     }
   }
 }
