@@ -1,0 +1,16 @@
+./ass/Idle (1).png
+./ass/Idle (2).png
+./ass/Idle (3).png
+./ass/Idle (4).png
+./ass/Idle (5).png
+./ass/Idle (6).png
+./ass/Idle (7).png
+./ass/Idle (8).png
+./ass/Idle (9).png
+./ass/Idle (10).png
+./ass/Idle (11).png
+./ass/Idle (12).png
+./ass/Idle (13).png
+./ass/Idle (14).png
+./ass/Idle (15).png
+./ass/Idle (16).png
